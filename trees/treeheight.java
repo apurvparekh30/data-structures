@@ -16,27 +16,14 @@ class Node {
 class Solution {
 
     /*
-     * you only have to complete the function given below. Node is defined as
-     * 
-     * class Node { int data; Node left; Node right; }
-     * 
+     * class Node int data; Node left; Node right;
      */
 
-    public static void inOrder(Node root) {
-        ArrayDeque<Node> arrayDeque = new ArrayDeque<>();
-        while (true) {
-            if (root == null && arrayDeque.isEmpty())
-                break;
-            if (root != null) {
-                arrayDeque.addLast(root);
-                root = root.left;
-            } else {
-                root = arrayDeque.pollLast();
-                System.out.printf("%d ", root.data);
-                root = root.right;
-            }
-
-        }
+    public static int height(Node root) {
+        // Write your code here.
+        if (root == null)
+            return -1;
+        return Math.max(height(root.left) + 1, height(root.right) + 1);
     }
 
     public static Node insert(Node root, int data) {
@@ -64,6 +51,7 @@ class Solution {
             root = insert(root, data);
         }
         scan.close();
-        inOrder(root);
+        int height = height(root);
+        System.out.println(height);
     }
 }

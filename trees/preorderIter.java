@@ -24,16 +24,17 @@ class Solution {
 
     public static void preOrder(Node root) {
         ArrayDeque<Node> ad = new ArrayDeque<>();
-        while(true){
-            if(root==null && ad.isEmpty())
+        while (true) {
+            if (root == null && ad.isEmpty())
                 break;
-            while(root!=null){
-                System.out.printf("%d " ,root.data);
+            if (root != null) {
+                System.out.printf("%d ", root.data);
                 ad.addLast(root);
-                root=root.left;
+                root = root.left;
+            } else {
+                Node top = ad.pollLast();
+                root = top.right;
             }
-            Node top = ad.pollLast();
-            root=top.right;
         }
     }
 
