@@ -1,4 +1,4 @@
-// Rotate a 2D array without using extra space 
+// geeksforgeeks solution to Count of strings that can be formed using a, b and c under given constraints
 
 import java.util.*;
 import java.io.*;
@@ -7,34 +7,29 @@ class Solution{
 
     static FastReader fs = new FastReader();
     static int n;
-    static int [][]a;
+    static int [][][] memo;
+    static int dfs(int n,int bc,int cc){
+        if(bc < 0 || cc < 0)
+            return 0;
+        if(n == 0)
+            return 1;
+        if(bc == 0 && cc == 0)
+            return 1;
+        if(memo[n][bc][cc] != 0)
+            return memo[n][bc][cc];
+        return memo[n][bc][cc] = dfs(n-1,bc,cc) + dfs(n-1,bc-1,cc) + dfs(n-1,bc,cc-1);
+    }
+
     public static void main(String[] args) {
-        int cases = fs.nextInt();
-        for(int tt = 1; tt <= cases; tt++){
-            n = fs.nextInt();
-            a = new int[n][n];
-            for(int i=0;i<n;i++)
-                for(int j=0;j<n;j++)
-                    a[i][j] = fs.nextInt();
-
-                    
-            for(int i=0;i<n;i++){
-                for(int j=i+1;j<n;j++){
-                    int temp = a[i][j];
-                    a[i][j] = a[j][i];
-                    a[j][i] = temp;
-                }
-                //System.out.println(Arrays.toString(a[i]));
-            }
-
-            StringBuilder sb = new StringBuilder();
-            for(int i=0;i<n;i++){
-                for(int j=n-1;j>=0;j--){
-                    sb.append(a[i][j]).append(' ');
-                }
-            }
-            System.out.println(sb);
-        }
+       int cases = fs.nextInt();
+       for(int tt=1;tt<=cases;tt++){
+           n = fs.nextInt();
+           memo = new int [n+1][2][3];
+           /* for(int i=0;i<=n;i++)
+            for(int j=0;j<2;j++)
+                Arrays.fill(memo[i][j],-1); */
+           System.out.println(dfs(n,1,2));
+       } 
     }
     static class FastReader {
         BufferedReader br;
