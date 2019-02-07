@@ -14,29 +14,17 @@ class Tree {
 
 class GfG
 {
-	static int sum = 0;
-    static int []path = new int[100];
     public static int treePathsSum(Tree root){
-        sum = 0;
-        path = new int[100];
-        rec(root,0);
-        return sum/2;
+        return rec(root,0);
     }
-    static void rec(Tree root,int idx){
+    static int rec(Tree root,int val){
         if(root==null){
-            calCulateSum(idx);
-            return;
+            return 0;
         }
-        path[idx] = root.data;
-        rec(root.left,idx+1);
-        rec(root.right,idx+1);
+        val = (val * 10) + root.data;
+        if(root.left == null && root.right == null)
+            return val;
+        return rec(root.left,idx+1) + rec(root.right,idx+1);
     }
-    static void calCulateSum(int n){
-        int m = 1;
-        for(int i=n-1;i>=0;i--){
-            sum += (path[i] * m);
-            m = m * 10;
-        }
-        //System.out.println(sum);
-    }
+    
 }
