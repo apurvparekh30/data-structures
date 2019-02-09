@@ -14,14 +14,11 @@ class Solution{
             arr = new int[n];
             for(int i=0;i<n;i++)
                 arr[i] = fs.nextInt();
-            int sum = Integer.MIN_VALUE;
-            int curr = 0;
-            for(int i=0;i<n;i++){
-                curr = curr + arr[i];
-                sum = Math.max(curr,sum);
-                if(curr < 0){
-                    curr = 0;
-                }
+            int sum = arr[0];
+            int curr = arr[0];
+            for(int i=1;i<n;i++){
+                curr = Math.max(arr[i],curr+arr[i]);
+                sum = Math.max(sum,curr);
             }
             System.out.println(sum);
         }
