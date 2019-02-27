@@ -1,52 +1,52 @@
+// Egg Dropping Puzzle 
+
 import java.util.*;
-import java.lang.*;
 import java.io.*;
 
 class Solution {
 
     static FastReader fs = new FastReader();
-    static HashSet<String> hs;
-    static String word;
-    static int n;
-    static int memo[];
+    static int memo[][];
+    static int n,h;
 
-    static int rec(int i){
-        if(i==word.length())
-            return 1;
-        if(memo[i]!=-1)
-            return memo[i];
-        for(int j=i+1;j<=word.length();j++){
-            if(hs.contains(word.substring(i,j))){
-                //System.out.println("hi");
-                if(rec(j)==1){
-                    return memo[i] = 1;
-                }
-            }
+    static int rec(int r,int k){
+        if(r == 1)
+            return k;
+        if(k <= 0)
+            return 0;
+        if(memo[r][k]!=-1){
+            return memo[r][k];
         }
-        return memo[i] = 0;
+        memo[r][k] = 0;
+        int ans = 987654321;
+        for(int i=1;i<=k;i++){
+            ans = Math.min(ans,1 + Math.max(rec(r-1,i-1),rec(r,k-i)));
+            //System.out.println("r=" + r + " " + "i=" + i + " " + ans);
+        }   
+        
+        return memo[r][k] = ans;
     }
     public static void main(String[] args) {
-        int cases = fs.nextInt();
-        for(int tt=1;tt<=cases;tt++){
-            hs = new HashSet<>();
+        int tc = fs.nextInt();
+        for(int tt=1;tt<=tc;tt++) {
             n = fs.nextInt();
-            for(int i=0;i<n;i++){
-                hs.add(fs.next());
-            }
-            word = fs.next();
-            memo = new int[word.length()];
-            Arrays.fill(memo,-1);
-            System.out.println(rec(0));
+            h = fs.nextInt();
+            memo = new int[n+1][h+1];
+            for(int i=0;i<=n;i++)
+                Arrays.fill(memo[i],-1);
+            
+            System.out.println(rec(n,h));
         }
     }
+
     static class FastReader {
         BufferedReader br;
         StringTokenizer st;
-    
+
         public FastReader() {
             br = new BufferedReader(new InputStreamReader(System.in));
         }
-    
+
         String next() {
             while (st == null || !st.hasMoreElements()) {
                 try {
@@ -57,19 +57,19 @@ class Solution {
             }
             return st.nextToken();
         }
-    
+
         int nextInt() {
             return Integer.parseInt(next());
         }
-    
+
         long nextLong() {
             return Long.parseLong(next());
         }
-    
+
         double nextDouble() {
             return Double.parseDouble(next());
         }
-    
+
         String nextLine() {
             String str = "";
             try {

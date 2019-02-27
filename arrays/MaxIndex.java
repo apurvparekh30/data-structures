@@ -24,6 +24,7 @@ class Solution {
             maxIndex[n-1] = n - 1;
             for(int i=n-1;i>0;i--)
                 maxIndex[i-1] = arr[i-1] > arr[maxIndex[i]] ? i - 1:maxIndex[i];
+            System.out.println(Arrays.toString(maxIndex));
             int i = 0;
             int j = 0;
             int max = 0;

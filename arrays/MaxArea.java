@@ -27,9 +27,13 @@ class Solution {
                     st.push(i++);
                     continue;
                 } else {
+                    /* if(arr[i] == 1){
+                        System.out.println(st);
+                    } */
                     int t = st.peek();
                     st.pop();
                     long max = arr[t] * (st.isEmpty() ? i : i - st.peek() - 1);
+                    
                     if (max > max_ans)
                         max_ans = max;
                 }
