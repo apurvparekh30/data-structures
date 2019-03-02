@@ -8,7 +8,7 @@ class Solution {
     static int[] arr;
     static int memo[][];
 
-    /* static int dp(int i, int k) {
+    static int dp(int i, int k) {
         if (i >= n) {
             return arr[n - 1];
         }
@@ -23,11 +23,11 @@ class Solution {
         // ideally if arr[i] is returned then only we should substract
         int ans = Math.min(Math.max(arr[i], dp(i + 1, k - 1) - arr[i]), dp(i + 1, k));
         return memo[i][k] = ans;
-    } */
+    }
 
     
 
-    static int dp(int frm, int k) {
+    /* static int dp(int frm, int k) {
         if (frm >= n - 1) {
             return sum(frm, n);
         }
@@ -50,7 +50,7 @@ class Solution {
         for (int i = from; i < to; i++)
             total += arr[i];
         return total;
-    }
+    } */
 
     public static void main(String[] args) {
         int tc = fs.nextInt();
@@ -60,11 +60,11 @@ class Solution {
             arr = new int[n];
             for (int i = 0; i < n; i++)
                 arr[i] = fs.nextInt();
-            /* 
+            
              for (int i = 1; i < n; i++) 
                 arr[i] = arr[i] + arr[i - 1];
             
-             System.out.println(Arrays.toString(arr)); */
+             System.out.println(Arrays.toString(arr));
             memo = new int[n][k + 1];
             for (int i = 0; i < n; i++)
                 Arrays.fill(memo[i], -1);
