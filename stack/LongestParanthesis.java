@@ -32,6 +32,7 @@ class Solution {
                     }
                 }
             }
+            System.out.println(st);
             System.out.println(max);
         }
     }
