@@ -15,3 +15,7 @@ Replace O's with X's
 Longest valid parenthesis substring
 Stream median
 Maximum absolute difference
+
+LRU cache
+SubArraySizeK
+Print leaf nodes from preorder traversal of BST 
