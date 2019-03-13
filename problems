@@ -16,3 +16,6 @@ LRU cache
 SubArraySizeK
 Print leaf nodes from preorder traversal of BST 
 Find the repeating and the missing
+Count subsequences of type a^i b^j c^k 
+Largest Number formed from an Array
+Possible groups 
