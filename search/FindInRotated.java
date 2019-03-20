@@ -1,5 +1,5 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 class Solution {
     static Scanner fs = new Scanner(System.in);
@@ -52,7 +52,7 @@ class Solution {
             arr = new int[n];
             for(int i=0;i<n;i++)
                 arr[i] = fs.nextInt();
-            System.out.println(arr[16075] + " " + arr[16076] + " "+ arr[16077] + " " + arr[16078]);
+            //System.out.println(arr[16075] + " " + arr[16076] + " "+ arr[16077] + " " + arr[16078]);
             key = fs.nextInt();
             System.out.println(binarySearch(0,n-1));
         }
