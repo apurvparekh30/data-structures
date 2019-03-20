@@ -4,42 +4,35 @@ class Solution {
 
     static Scanner fs = new Scanner(System.in);
     static char []a,b;
-    static int [][]dp;
+    static int dp[][];
+    static int n,m;
 
     static int rec(int i,int j){
-        if(i>=a.length || j>=b.length)
+        if(i==n || j==m)
             return 0;
         if(dp[i][j]!=-1)
             return dp[i][j];
-
         if(a[i]==b[j]){
             dp[i][j] = 1 + rec(i+1,j+1);
         }
-        else {
-            dp[i][j] = 0;
+        else{
+            dp[i][j] = Math.max(rec(i+1,j),rec(i,j+1));
         }
-        rec(i+1,j);
-        rec(i,j+1);
         return dp[i][j];
     }
 
     public static void main(String[] args) {
         int tc = fs.nextInt();
         while(tc-- > 0){
-            int n = fs.nextInt();
-            int m = fs.nextInt();
+            n = fs.nextInt();
+            m = fs.nextInt();
             a = fs.next().toCharArray();
             b = fs.next().toCharArray();
             dp = new int[n][m];
-            for(int i=0;i<n;i++){
-                Arrays.fill(dp[i],-1);
+            for(int []row:dp){
+                Arrays.fill(row,-1);
             }
-            rec(0,0);
-            int max = 0;
-            for(int i=0;i<n;i++)
-                for(int j=0;j<m;j++)
-                    max = Math.max(max,dp[i][j]);
-            System.out.println(max);
+            System.out.println(rec(0,0));
         }
-    }   
+    }
 }
