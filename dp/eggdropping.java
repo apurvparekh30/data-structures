@@ -21,7 +21,6 @@ class Solution {
         int ans = 987654321;
         for(int i=1;i<=k;i++){
             ans = Math.min(ans,1 + Math.max(rec(r-1,i-1),rec(r,k-i)));
-            //System.out.println("r=" + r + " " + "i=" + i + " " + ans);
         }   
         
         return memo[r][k] = ans;
