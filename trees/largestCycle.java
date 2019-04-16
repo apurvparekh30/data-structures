@@ -6,12 +6,17 @@ class TestClass {
     static Scanner fs = new Scanner(System.in);
     static Map<Integer,List<Integer>> adj;
     static boolean done[];
+    static int n;
 
     static class pair {
         int d,u;
-        pair(int d,int u){
-            this.d = d;
+        pair(int u,int d){
             this.u = u;
+            this.d = d;
+        }
+        @Override
+        public String toString() {
+            return u + "  " + d;
         }
     }
 
@@ -37,12 +42,33 @@ class TestClass {
 
     static int bfs(int u){
         Queue<pair> q = new ArrayDeque<>();
-        boolean done[]
+        boolean done[] = new boolean[n+1];
+        done[u] = true;
+        int d = 0;
+        q.offer(new pair(u,d));
+        int dist = 0;
+        int vertex = u;
+
+        while(!q.isEmpty()){
+            pair curr = q.poll();
+            u = curr.u;
+            d = curr.d;
+            if(dist < d){
+                dist = d;
+                vertex = u;
+            }
+            for(int v:adj.getOrDefault(u, new ArrayList<>())){
+                if(done[v])
+                    continue;
+                done[v] = true;
+                q.offer(new pair(v,d+1));
+            }
+        }
+        return vertex;
     }
     public static void main(String args[]) throws Exception {
-        int n = fs.nextInt();
+        n = fs.nextInt();
         adj = new HashMap<>();
-        done = new boolean [n+1]; 
         for(int i=0;i<n-1;i++){
             int u = fs.nextInt();
             int v = fs.nextInt();
@@ -55,11 +81,8 @@ class TestClass {
             }
             adj.get(v).add(u);
         }
-        done[1] = true;
-        int u = dfs(1).u;
-        done = new boolean[n+1];
-        done[u] = true;
-        int v = dfs(u).u;
+        int u = bfs(1);
+        int v = bfs(u);
         System.out.println(u + "  "+ v);
     }
 }
