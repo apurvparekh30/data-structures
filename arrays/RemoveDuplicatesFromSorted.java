@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 class Solution {
     public int removeDuplicates(int[] nums) {
         int j = 0;
@@ -12,4 +14,6 @@ class Solution {
         nums[j++] = nums[n-1];
         return j;
     }
+
 }
+
