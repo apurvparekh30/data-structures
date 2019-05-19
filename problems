@@ -27,6 +27,7 @@ Longest Common Substring
 Matrix Chain Multiplication
 Diagonal Traversal of Binary Tree
 Tree Symmetry
+Check if String is Sum String
 Disctrubute Coins in binary tree  [leetcode]
 Decoded String at Index [leetcode]
 Get BST from level order traversal [leetcode]
@@ -35,6 +36,14 @@ Ugly Number [leetcode]
 
 Cargo loading nautanix
 2 clique problem
+
+Greedy
+    - Activity Selction Problem
+    - Job Sequencing Problem 
+        - Maximum profit with deadline only
+        - Minimizing the Lateness
+    - Scheduling All intervals (interval paritioning problem) / number of resorces needed
+    - Interval Covering Problem
 
 
 https://open.kattis.com/problem-sources/Mount%20Allison%20Programming%20Showdown%20%28MAPS%202019%29
