@@ -19,12 +19,14 @@ class Solution {
             int i = 0;
             while(i<n){
                 if(stack.isEmpty() || arr[stack.peek()] < arr[i]){
+                    System.out.println("max " + max + " " + i);
                     stack.push(i);
                     i++;
                     continue;
                 }
-                
+                System.out.println(stack + " " + i);
                 int top = stack.pop();
+                System.out.println(arr[top]);
                 //System.out.println(top + " " + i + " " + (stack.isEmpty() ? "empty":stack.peek()));
                 
                 max = Math.max(max,(arr[top] * (stack.isEmpty() ? i:i-1-stack.peek())));

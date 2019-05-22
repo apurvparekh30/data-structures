@@ -18,6 +18,7 @@ class Solution {
             st.push(-1);
             int max = 0;
             for(int i=0;i<ch.length;i++){
+                System.out.println(st + " " + max);
                 char c = ch[i];
                 if(c == '('){
                     st.push(i);
