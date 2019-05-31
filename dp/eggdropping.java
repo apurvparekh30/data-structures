@@ -14,9 +14,9 @@ class Solution {
             return k;
         if(k <= 0)
             return 0;
-        if(memo[r][k]!=-1){
+        /* if(memo[r][k]!=-1){
             return memo[r][k];
-        }
+        } */
         memo[r][k] = 0;
         int ans = 987654321;
         for(int i=1;i<=k;i++){
