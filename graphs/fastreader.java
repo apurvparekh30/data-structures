@@ -1,4 +1,4 @@
-// reading the fast input
+   //reading the fast input
 static class FastReader {
     BufferedReader br;
     StringTokenizer st;
